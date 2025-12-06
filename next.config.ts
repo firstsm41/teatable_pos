@@ -2,13 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
-  output: 'export', // GitHub Pages를 위한 정적 내보내기
-  images: {
-    unoptimized: true, // GitHub Pages에서는 이미지 최적화 비활성화
-  },
-  // GitHub Pages의 basePath 설정 (저장소 이름이 teatable_pos인 경우)
-  // basePath: '/teatable_pos',
-  // assetPrefix: '/teatable_pos',
+  // Vercel 배포를 위해 output: 'export' 제거 (서버 기능 필요)
 };
 
 export default nextConfig;

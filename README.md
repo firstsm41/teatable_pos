@@ -90,36 +90,45 @@ Supabase에 다음 테이블들이 필요합니다:
 
 ## 배포
 
-### GitHub Pages 배포 (권장)
+### Vercel 배포 (권장) ⚡
 
-이 프로젝트는 GitHub Pages에 자동 배포되도록 설정되어 있습니다.
+Vercel은 Next.js를 만든 회사에서 제공하는 플랫폼으로, 가장 쉽고 빠르게 배포할 수 있습니다.
 
-#### 설정 방법
+#### 빠른 배포 방법
 
-1. **GitHub 저장소 설정**
-   - 저장소 설정 → Pages → Source를 "GitHub Actions"로 선택
+1. **Vercel 가입 및 프로젝트 연결**
+   - [vercel.com](https://vercel.com)에 접속하여 GitHub 계정으로 가입/로그인
+   - "Add New Project" 클릭
+   - `firstsm41/teatable_pos` 저장소 선택
+   - "Import" 클릭
 
 2. **환경 변수 설정**
-   - 저장소 설정 → Secrets and variables → Actions
-   - 다음 Secrets 추가:
-     - `NEXT_PUBLIC_SUPABASE_URL`: Supabase 프로젝트 URL
-     - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Supabase Anon Key
+   - 프로젝트 설정 화면에서 "Environment Variables" 섹션으로 이동
+   - 다음 변수 추가:
+     ```
+     NEXT_PUBLIC_SUPABASE_URL = https://soeivyxsazxuvxhmipag.supabase.co
+     NEXT_PUBLIC_SUPABASE_ANON_KEY = sb_publishable_29pe6qFwHxU2n9IuyjCSjw_hyLPdFcm
+     ```
+   - Environment: Production, Preview, Development 모두 선택
+   - "Save" 클릭
 
-3. **자동 배포**
-   - `main` 브랜치에 푸시하면 자동으로 빌드 및 배포됩니다
-   - 배포 상태는 Actions 탭에서 확인 가능합니다
+3. **배포 실행**
+   - "Deploy" 버튼 클릭
+   - 빌드가 완료되면 자동으로 URL이 생성됩니다 (예: `https://teatable-pos.vercel.app`)
 
-#### 배포 URL
+4. **자동 배포 설정 (이미 완료)**
+   - `main` 브랜치에 푸시할 때마다 자동으로 재배포됩니다
 
-- 저장소 이름이 `teatable_pos`인 경우:
-  - URL: `https://firstsm41.github.io/teatable_pos`
-  - `next.config.ts`의 `basePath`와 `assetPrefix` 주석을 해제해야 할 수 있습니다
+#### 배포 후 확인사항
 
-### Vercel 배포
+- 배포 완료 후 제공되는 URL로 접속하여 앱이 정상 작동하는지 확인
+- 로그인 페이지가 표시되면 성공!
 
-1. [Vercel](https://vercel.com)에 프로젝트를 연결
-2. 환경 변수를 Vercel 대시보드에 추가
-3. 자동 배포 완료
+### 다른 배포 옵션
+
+- **Netlify**: [netlify.com](https://www.netlify.com) - 무료 플랜 제공
+- **Railway**: [railway.app](https://railway.app) - 서버리스 및 데이터베이스 지원
+- **Render**: [render.com](https://render.com) - 무료 티어 제공
 
 ### 다른 플랫폼
 
