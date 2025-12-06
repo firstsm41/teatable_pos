@@ -90,6 +90,31 @@ Supabase에 다음 테이블들이 필요합니다:
 
 ## 배포
 
+### GitHub Pages 배포 (권장)
+
+이 프로젝트는 GitHub Pages에 자동 배포되도록 설정되어 있습니다.
+
+#### 설정 방법
+
+1. **GitHub 저장소 설정**
+   - 저장소 설정 → Pages → Source를 "GitHub Actions"로 선택
+
+2. **환경 변수 설정**
+   - 저장소 설정 → Secrets and variables → Actions
+   - 다음 Secrets 추가:
+     - `NEXT_PUBLIC_SUPABASE_URL`: Supabase 프로젝트 URL
+     - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Supabase Anon Key
+
+3. **자동 배포**
+   - `main` 브랜치에 푸시하면 자동으로 빌드 및 배포됩니다
+   - 배포 상태는 Actions 탭에서 확인 가능합니다
+
+#### 배포 URL
+
+- 저장소 이름이 `teatable_pos`인 경우:
+  - URL: `https://firstsm41.github.io/teatable_pos`
+  - `next.config.ts`의 `basePath`와 `assetPrefix` 주석을 해제해야 할 수 있습니다
+
 ### Vercel 배포
 
 1. [Vercel](https://vercel.com)에 프로젝트를 연결
