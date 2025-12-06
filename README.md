@@ -90,39 +90,77 @@ Supabase에 다음 테이블들이 필요합니다:
 
 ## 배포
 
-### Vercel 배포 (권장) ⚡
+### Vercel 배포 (권장) ⚡ 빠른 배포
 
-Vercel은 Next.js를 만든 회사에서 제공하는 플랫폼으로, 가장 쉽고 빠르게 배포할 수 있습니다.
+Vercel은 Next.js를 만든 회사에서 제공하는 플랫폼으로, 가장 쉽고 빠르게 실제 프로덕션 환경에 배포할 수 있습니다.
 
-#### 빠른 배포 방법
+#### 📝 단계별 배포 가이드
 
-1. **Vercel 가입 및 프로젝트 연결**
-   - [vercel.com](https://vercel.com)에 접속하여 GitHub 계정으로 가입/로그인
-   - "Add New Project" 클릭
-   - `firstsm41/teatable_pos` 저장소 선택
-   - "Import" 클릭
+**1단계: Vercel 가입 및 프로젝트 연결**
+```
+1. https://vercel.com 접속
+2. "Sign Up" 클릭 → GitHub 계정으로 로그인
+3. 대시보드에서 "Add New..." → "Project" 클릭
+4. "Import Git Repository" 선택
+5. `firstsm41/teatable_pos` 저장소 선택
+6. "Import" 클릭
+```
 
-2. **환경 변수 설정**
-   - 프로젝트 설정 화면에서 "Environment Variables" 섹션으로 이동
-   - 다음 변수 추가:
-     ```
-     NEXT_PUBLIC_SUPABASE_URL = https://soeivyxsazxuvxhmipag.supabase.co
-     NEXT_PUBLIC_SUPABASE_ANON_KEY = sb_publishable_29pe6qFwHxU2n9IuyjCSjw_hyLPdFcm
-     ```
-   - Environment: Production, Preview, Development 모두 선택
-   - "Save" 클릭
+**2단계: 프로젝트 설정**
+```
+- Framework Preset: Next.js (자동 감지됨)
+- Root Directory: ./
+- Build Command: npm run build (기본값)
+- Output Directory: .next (기본값)
+- Install Command: npm install (기본값)
+```
 
-3. **배포 실행**
-   - "Deploy" 버튼 클릭
-   - 빌드가 완료되면 자동으로 URL이 생성됩니다 (예: `https://teatable-pos.vercel.app`)
+**3단계: 환경 변수 설정 (중요!)**
+```
+프로젝트 설정 화면에서:
+1. "Environment Variables" 섹션 클릭
+2. 다음 변수를 하나씩 추가:
 
-4. **자동 배포 설정 (이미 완료)**
-   - `main` 브랜치에 푸시할 때마다 자동으로 재배포됩니다
+   변수 1:
+   - Name: NEXT_PUBLIC_SUPABASE_URL
+   - Value: https://soeivyxsazxuvxhmipag.supabase.co
+   - Environment: Production, Preview, Development 모두 체크
+   
+   변수 2:
+   - Name: NEXT_PUBLIC_SUPABASE_ANON_KEY
+   - Value: sb_publishable_29pe6qFwHxU2n9IuyjCSjw_hyLPdFcm
+   - Environment: Production, Preview, Development 모두 체크
 
-#### 배포 후 확인사항
+3. 각 변수 추가 후 "Save" 클릭
+```
 
-- 배포 완료 후 제공되는 URL로 접속하여 앱이 정상 작동하는지 확인
-- 로그인 페이지가 표시되면 성공!
+**4단계: 배포 실행**
+```
+1. "Deploy" 버튼 클릭
+2. 빌드 진행 상황 확인 (약 1-2분 소요)
+3. "Congratulations!" 메시지와 함께 배포 URL 생성
+   예: https://teatable-pos.vercel.app
+```
+
+**5단계: 배포 확인**
+```
+1. 제공된 URL로 접속
+2. 로그인 페이지가 정상적으로 표시되는지 확인
+3. 매장 코드로 로그인 테스트
+```
+
+#### 🔄 자동 배포 설정
+
+- ✅ `main` 브랜치에 푸시할 때마다 자동으로 재배포됩니다
+- ✅ Pull Request 생성 시 프리뷰 배포가 자동 생성됩니다
+- ✅ 배포 상태는 Vercel 대시보드에서 실시간 확인 가능합니다
+
+#### 🌐 커스텀 도메인 설정 (선택사항)
+
+1. Vercel 프로젝트 설정 → Domains
+2. 원하는 도메인 입력 (예: `pos.teatable.com`)
+3. DNS 설정 안내에 따라 도메인 제공자의 DNS 레코드 추가
+4. SSL 인증서는 자동으로 발급됩니다
 
 ### 다른 배포 옵션
 
