@@ -2,6 +2,10 @@
 
 티테이블 카페를 위한 포인트 오브 세일(POS) 주문 관리 시스템입니다.
 
+## 🌐 배포 사이트
+
+**👉 [https://teatable-pos.vercel.app](https://teatable-pos.vercel.app)**
+
 ## 주요 기능
 
 - 🔐 **매장 코드 기반 인증**: 고유 매장 코드로 로그인
@@ -90,11 +94,13 @@ Supabase에 다음 테이블들이 필요합니다:
 
 ## 배포
 
-### Vercel 배포 (권장) ⚡ 빠른 배포
+### Vercel 배포 (권장) ⚡
+
+이 프로젝트는 Vercel에 배포되어 있습니다: **[https://teatable-pos.vercel.app](https://teatable-pos.vercel.app)**
 
 Vercel은 Next.js를 만든 회사에서 제공하는 플랫폼으로, 가장 쉽고 빠르게 실제 프로덕션 환경에 배포할 수 있습니다.
 
-#### 📝 단계별 배포 가이드
+#### 📝 배포 가이드
 
 **1단계: Vercel 가입 및 프로젝트 연결**
 ```
@@ -106,16 +112,7 @@ Vercel은 Next.js를 만든 회사에서 제공하는 플랫폼으로, 가장 �
 6. "Import" 클릭
 ```
 
-**2단계: 프로젝트 설정**
-```
-- Framework Preset: Next.js (자동 감지됨)
-- Root Directory: ./
-- Build Command: npm run build (기본값)
-- Output Directory: .next (기본값)
-- Install Command: npm install (기본값)
-```
-
-**3단계: 환경 변수 설정 (중요!)**
+**2단계: 환경 변수 설정 (중요!)**
 ```
 프로젝트 설정 화면에서:
 1. "Environment Variables" 섹션 클릭
@@ -123,33 +120,25 @@ Vercel은 Next.js를 만든 회사에서 제공하는 플랫폼으로, 가장 �
 
    변수 1:
    - Name: NEXT_PUBLIC_SUPABASE_URL
-   - Value: https://soeivyxsazxuvxhmipag.supabase.co
+   - Value: your_supabase_project_url
    - Environment: Production, Preview, Development 모두 체크
    
    변수 2:
    - Name: NEXT_PUBLIC_SUPABASE_ANON_KEY
-   - Value: sb_publishable_29pe6qFwHxU2n9IuyjCSjw_hyLPdFcm
+   - Value: your_supabase_anon_key
    - Environment: Production, Preview, Development 모두 체크
 
 3. 각 변수 추가 후 "Save" 클릭
 ```
 
-**4단계: 배포 실행**
+**3단계: 배포 실행**
 ```
 1. "Deploy" 버튼 클릭
 2. 빌드 진행 상황 확인 (약 1-2분 소요)
-3. "Congratulations!" 메시지와 함께 배포 URL 생성
-   예: https://teatable-pos.vercel.app
+3. 배포 완료 후 URL 생성
 ```
 
-**5단계: 배포 확인**
-```
-1. 제공된 URL로 접속
-2. 로그인 페이지가 정상적으로 표시되는지 확인
-3. 매장 코드로 로그인 테스트
-```
-
-#### 🔄 자동 배포 설정
+#### 🔄 자동 배포
 
 - ✅ `main` 브랜치에 푸시할 때마다 자동으로 재배포됩니다
 - ✅ Pull Request 생성 시 프리뷰 배포가 자동 생성됩니다
@@ -168,12 +157,14 @@ Vercel은 Next.js를 만든 회사에서 제공하는 플랫폼으로, 가장 �
 - **Railway**: [railway.app](https://railway.app) - 서버리스 및 데이터베이스 지원
 - **Render**: [render.com](https://render.com) - 무료 티어 제공
 
-### 다른 플랫폼
+## 사용 방법
 
-Next.js는 모든 주요 호스팅 플랫폼에서 실행할 수 있습니다:
-- Netlify
-- AWS Amplify
-- Docker
+1. 배포된 사이트에 접속: [https://teatable-pos.vercel.app](https://teatable-pos.vercel.app)
+2. 매장 고유 코드를 입력하여 로그인
+3. 홈 화면에서 원하는 기능 선택:
+   - 📋 메뉴 관리: 메뉴 추가/수정/삭제
+   - 💳 POS: 주문 접수 및 처리
+   - 📦 주문 확인: 대기 중인 주문 확인 및 완료 처리
 
 ## 라이선스
 
@@ -182,3 +173,7 @@ Next.js는 모든 주요 호스팅 플랫폼에서 실행할 수 있습니다:
 ## 버전
 
 - **현재 버전**: 0.1.0
+
+## 기여
+
+버그 리포트나 기능 제안은 이슈로 등록해주세요.
