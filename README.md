@@ -47,6 +47,21 @@ npm run dev
 
 Vercel에 배포되어 있습니다. 자세한 배포 방법은 [DEPLOY.md](./DEPLOY.md)를 참고하세요.
 
+## 코드 검사
+
+Node.js 22에서 변경 사항을 올리기 전에 다음 명령으로 로컬 검사를 실행합니다.
+
+```bash
+npm ci
+npm run lint
+npm run typecheck
+npm run build
+```
+
+로컬 빌드에는 위에서 설명한 `.env.local` 설정이 필요합니다.
+GitHub Actions 워크플로는 사용하지 않습니다.
+배포는 Vercel의 Git 연동에서 처리하며, GitHub Pages용 정적 내보내기는 사용하지 않습니다.
+
 ## 데이터베이스
 
 Supabase에 다음 테이블이 필요합니다:
