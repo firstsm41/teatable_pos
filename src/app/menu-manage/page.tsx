@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import AuthGuard from '@/components/AuthGuard'
 import { supabase, Menu } from '@/lib/supabase'
 import { useAuthStore } from '@/lib/store'
@@ -12,8 +12,8 @@ export default function MenuManagePage() {
   const [editingId, setEditingId] = useState<string | null>(null)
   const [formData, setFormData] = useState({ name: '', price: '' })
 
-  const fetchMenus = async () => {
-    if (!store) return
+  const loadMenus = useCallback(async () => {
+    if (!store) return []
     const { data } = await supabase
       .from('menus')
       .select('*')
@@ -21,13 +21,26 @@ export default function MenuManagePage() {
       .eq('is_active', true)
       .order('created_at', { ascending: true })
     
-    setMenus(data || [])
+    return data || []
+  }, [store])
+
+  const fetchMenus = useCallback(async () => {
+    const data = await loadMenus()
+    setMenus(data)
     setLoading(false)
-  }
+  }, [loadMenus])
 
   useEffect(() => {
-    fetchMenus()
-  }, [store])
+    let active = true
+    loadMenus().then((data) => {
+      if (!active) return
+      setMenus(data)
+      setLoading(false)
+    })
+    return () => {
+      active = false
+    }
+  }, [loadMenus])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
